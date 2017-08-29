@@ -1,4 +1,4 @@
-package Entities;
+package Domains;
 
 
 public abstract class DrawingItem {

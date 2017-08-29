@@ -1,4 +1,4 @@
-package Entities;
+package Domains;
 
 public class Point {
     private double x;

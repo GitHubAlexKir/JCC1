@@ -1,4 +1,4 @@
-package Entities;
+package Domains;
 
 public class Oval extends DrawingItem {
     private Point anchor;
@@ -6,7 +6,7 @@ public class Oval extends DrawingItem {
     private double height;
     private double weight;
 
-    public Oval(Color color,Point anchor,double width,double height, double weight)
+    public Oval(Color color, Point anchor, double width, double height, double weight)
     {
         this.color = color;
         this.anchor = anchor;
@@ -32,6 +32,6 @@ public class Oval extends DrawingItem {
 
     @Override
     public String toString() {
-        return "Color: " + getColor() + " anchor: " + getAnchor().getX() + ", " + getAnchor().getY() + " Width: " + getWidth() + " Heigth: " + getHeight();
+        return "Color " + getColor() + ", anchor X" + getAnchor().getX() + ", Y" + getAnchor().getY() + ", Width " + getWidth() + ", Height " + getHeight();
     }
 }

@@ -1,4 +1,4 @@
-package Entities;
+package Domains;
 
 public enum Color {
    BLACK,
