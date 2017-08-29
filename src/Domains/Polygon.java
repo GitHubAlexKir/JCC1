@@ -1,5 +1,9 @@
 package Domains;
 
+import javafx.geometry.BoundingBox;
+
+import java.awt.*;
+
 public class Polygon extends DrawingItem
 {
     private Point[] vertices;
@@ -39,4 +43,5 @@ public class Polygon extends DrawingItem
     public String toString() {
         return "Weight " + this.weight;
     }
+
 }
