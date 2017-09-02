@@ -16,7 +16,7 @@ public class Image extends DrawingItem {
     }
 
     public Point getAnchor() {
-        return null;
+        return anchor;
     }
 
     public File getFile() {
@@ -49,6 +49,11 @@ public class Image extends DrawingItem {
 
     @Override
     public String toString() {
-        return "file " + this.file;
+        return "anchor X" + this.anchor.getX() + ", Y" + this.anchor.getY() +", file " + this.file;
+    }
+
+    @Override
+    public int compare(DrawingItem o1, DrawingItem o2) {
+        return Double.compare(o1.getAnchor().getX(), o2.getAnchor().getX());
     }
 }

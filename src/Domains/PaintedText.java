@@ -57,6 +57,11 @@ public class PaintedText extends DrawingItem{
 
     @Override
     public String toString() {
-        return "content " + this.content + ", fontName " + this.fontName;
+        return "anchor X" + this.anchor.getX() + ", Y" + this.anchor.getY() +", content " + this.content + ", fontName " + this.fontName;
+    }
+
+    @Override
+    public int compare(DrawingItem o1, DrawingItem o2) {
+        return Double.compare(o1.getAnchor().getX(), o2.getAnchor().getX());
     }
 }

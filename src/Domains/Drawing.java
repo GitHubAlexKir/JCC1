@@ -1,7 +1,6 @@
 package Domains;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Drawing {
@@ -28,6 +27,7 @@ public class Drawing {
 
     public void addItem(DrawingItem item)
     {
+
         items.add(item);
     }
 
@@ -40,4 +40,5 @@ public class Drawing {
     {
         this.items.set(index,item);
     }
+
 }

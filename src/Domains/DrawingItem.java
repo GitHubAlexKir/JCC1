@@ -1,9 +1,11 @@
 package Domains;
 
 
-public abstract class DrawingItem {
+import java.util.Comparator;
 
-    public Color color;
+public abstract class DrawingItem implements Comparator<DrawingItem> {
+
+    Color color;
 
     public abstract Point getAnchor();
 
@@ -11,13 +13,13 @@ public abstract class DrawingItem {
 
     public abstract double getHeight();
 
-    public void setColor(Color color)
-    {
+    public void setColor(Color color) {
         this.color = color;
     }
-    public Color getColor()
-    {
+
+    Color getColor() {
         return color;
     }
-
+    public static Comparator<DrawingItem> drawingItemComparator = Comparator.comparingDouble(o -> o.getAnchor().getX());
 }
+

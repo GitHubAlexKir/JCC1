@@ -1,12 +1,9 @@
 package Domains;
 
-import javafx.geometry.BoundingBox;
-
-import java.awt.*;
 
 public class Polygon extends DrawingItem
 {
-    private Point[] vertices;
+    private final Point[] vertices;
     private double weight;
 
     public Polygon(Point[] vertices, double weight)
@@ -28,7 +25,7 @@ public class Polygon extends DrawingItem
     }
 
     public Point getAnchor() {
-        return null;
+        return vertices[0];
     }
 
     public double getWidth() {
@@ -41,7 +38,11 @@ public class Polygon extends DrawingItem
 
     @Override
     public String toString() {
-        return "Weight " + this.weight;
+        return "anchor X" + this.vertices[0].getX() + ", Y" + this.vertices[0].getY() + ", Weight " + this.weight;
     }
 
+    @Override
+    public int compare(DrawingItem o1, DrawingItem o2) {
+        return Double.compare(o1.getAnchor().getX(), o2.getAnchor().getX());
+    }
 }

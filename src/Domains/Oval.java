@@ -15,23 +15,48 @@ public class Oval extends DrawingItem {
         this.weight = weight;
     }
 
-    public Point getAnchor()
-    {
+    @Override
+    public Point getAnchor() {
         return anchor;
     }
 
-    public double getWidth()
-    {
-        return  width;
+    public void setAnchor(Point anchor) {
+        this.anchor = anchor;
     }
 
-    public double getHeight()
-    {
-        return  height;
+    @Override
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    @Override
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     @Override
     public String toString() {
-        return "Color " + getColor() + ", anchor X" + getAnchor().getX() + ", Y" + getAnchor().getY() + ", Width " + getWidth() + ", Height " + getHeight();
+        return "anchor X" + this.anchor.getX() + ", Y" + this.anchor.getY() +", Color " + getColor() +  ", Width " + getWidth() + ", Height " + getHeight();
+    }
+
+    @Override
+    public int compare(DrawingItem o1, DrawingItem o2) {
+        return Double.compare(o1.getAnchor().getX(), o2.getAnchor().getX());
     }
 }

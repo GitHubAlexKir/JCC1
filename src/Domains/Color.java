@@ -2,8 +2,8 @@ package Domains;
 
 public enum Color {
    BLACK,
-   WHATE,
+   WHITE,
    RED,
    BLUE,
-   GREEEN
+   GREEN
 }

@@ -1,22 +1,23 @@
 package Domains;
 
 public class Point {
-    private double x;
-    private double y;
+    private final double X;
+    private final double Y;
 
-    public Point(double x,double y)
+    public Point(double X,double Y)
     {
-        this.x = x;
-        this.y = y;
+        this.X = X;
+        this.Y = Y;
     }
 
     public double getX()
     {
-        return x;
+        return X;
     }
 
     public double getY()
     {
-        return y;
+        return Y;
     }
+
 }
