@@ -41,4 +41,9 @@ public class Drawing {
         this.items.set(index,item);
     }
 
+    public void paintUsing(IPaintable paintable)
+    {
+
+    }
+
 }
