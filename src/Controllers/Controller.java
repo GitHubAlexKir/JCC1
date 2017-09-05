@@ -5,14 +5,15 @@ import drawing.javafx.IPaintable;
 import drawing.javafx.JavaFXPaintable;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 
 import java.io.File;
 import java.io.IOException;
 
 public class Controller {
+    public ToggleGroup DrawingItemRadioBtn;
     @FXML
     private RadioButton OvalBtn;
     @FXML
@@ -23,11 +24,10 @@ public class Controller {
     private RadioButton PolygonBtn;
     @FXML
     private GridPane PaintingGrid;
-    private String selectedDrawingItem;
     @FXML
     private Canvas drawingCanvas;
-    IPaintable paint;
-    Drawing drawing = new Drawing("drawing") ;
+    private IPaintable paint;
+    private Drawing drawing = new Drawing("drawing") ;
     public Controller() {
 
         week1Testcode();
@@ -53,17 +53,11 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Image image = new Image(createdFile, new Point(4, 4), 3, 3);
+        Image image = new Image(createdFile, new Point(350, 40), 30, 30);
         System.out.println("Image: " + image.toString());
         drawing.addItem(image);
-        File temp = null;
-        try {
-            temp = File.createTempFile("temp-file-name", ".tmp");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         int index = drawing.getItems().indexOf(image);
-        image.setFile(temp);
+        image.setFile(new File("Domains/testing.jpg"));
         System.out.println("edited image, new file = " + image.getFile());
         drawing.editItem(index, image);
         System.out.println();
@@ -78,11 +72,7 @@ public class Controller {
             System.out.println(s.toString());
         }
     }
-    @FXML
-    private  void mouseClick()
-    {
 
-    }
     @FXML
     private  void painting()
     {
@@ -92,29 +82,26 @@ public class Controller {
     @FXML
     private void DrawingItemSelected()
     {
-        if (this.ImageBtn.isSelected() == true)
+        String selectedDrawingItem;
+        if (this.ImageBtn.isSelected())
         {
             System.out.println("Image");
-            this.selectedDrawingItem = "image";
             //drawing.addItem(new Image());
 
         }
-        if (this.OvalBtn.isSelected() == true)
+        if (this.OvalBtn.isSelected())
         {
             System.out.println("Oval");
-            this.selectedDrawingItem = "Oval";
             this.paint = new JavaFXPaintable(this.drawingCanvas);
 
         }
-        if (this.PaintedTextBtn.isSelected() == true)
+        if (this.PaintedTextBtn.isSelected())
         {
             System.out.println("PaintedText");
-            this.selectedDrawingItem = "PaintedText";
         }
-        if (this.PolygonBtn.isSelected() == true)
+        if (this.PolygonBtn.isSelected())
         {
             System.out.println("Polygon");
-            this.selectedDrawingItem = "Polygon";
         }
     }
 }

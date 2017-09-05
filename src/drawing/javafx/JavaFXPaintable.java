@@ -6,12 +6,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
-
-import java.util.ArrayList;
-import java.util.List;
+import javafx.scene.image.Image;
 
 public class JavaFXPaintable implements IPaintable {
-    GraphicsContext gc;
+    private final GraphicsContext gc;
     public JavaFXPaintable(Canvas canvas) {
         gc = canvas.getGraphicsContext2D();
 
@@ -67,7 +65,7 @@ public class JavaFXPaintable implements IPaintable {
     }
 
     @Override
-    public void paint(Image image) {
-
+    public void paint(Domains.Image image) {
+        gc.drawImage(new Image(String.valueOf(image.getFile())),image.getAnchor().getX(),image.getAnchor().getY());
     }
 }

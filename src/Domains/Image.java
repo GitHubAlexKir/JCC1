@@ -40,11 +40,11 @@ public class Image extends DrawingItem {
     }
 
     public double getWidth() {
-        return 0;
+        return width;
     }
 
     public double getHeight() {
-        return 0;
+        return height;
     }
 
     @Override

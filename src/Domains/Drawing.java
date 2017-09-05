@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Drawing {
     private String name;
-    private List<DrawingItem> items;
+    private final List<DrawingItem> items;
 
 
     public Drawing(String name) {

@@ -7,7 +7,7 @@ public abstract class DrawingItem implements Comparator<DrawingItem> {
 
     Color color;
 
-    public abstract Point getAnchor();
+    protected abstract Point getAnchor();
 
     public abstract double getWidth();
 
@@ -20,6 +20,6 @@ public abstract class DrawingItem implements Comparator<DrawingItem> {
     Color getColor() {
         return color;
     }
-    public static Comparator<DrawingItem> drawingItemComparator = Comparator.comparingDouble(o -> o.getAnchor().getX());
+    public static final Comparator<DrawingItem> drawingItemComparator = Comparator.comparingDouble(o -> o.getAnchor().getX());
 }
 
