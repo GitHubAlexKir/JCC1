@@ -1,4 +1,9 @@
-package Domains;
+package drawing.javafx;
+
+import Domains.Image;
+import Domains.Oval;
+import Domains.PaintedText;
+import Domains.Polygon;
 
 public interface IPaintable {
     void paint(Oval oval);

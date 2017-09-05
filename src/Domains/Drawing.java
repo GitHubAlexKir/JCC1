@@ -1,5 +1,7 @@
 package Domains;
 
+import drawing.javafx.IPaintable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +45,27 @@ public class Drawing {
 
     public void paintUsing(IPaintable paintable)
     {
-
+        for (DrawingItem t: this.items) {
+            System.out.println();
+            System.out.println(t.getClass());
+            if (t instanceof PaintedText)
+            {
+                paintable.paint((PaintedText) t);
+            }
+            if (t instanceof Image)
+            {
+                paintable.paint((Image) t);
+            }
+            if (t instanceof Oval)
+            {
+                paintable.paint((Oval) t);
+            }
+            if (t instanceof Polygon)
+            {
+                paintable.paint((Polygon) t);
+            }
+        }
     }
+
 
 }

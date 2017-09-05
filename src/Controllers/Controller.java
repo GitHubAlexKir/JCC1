@@ -1,7 +1,11 @@
 package Controllers;
 
 import Domains.*;
+import drawing.javafx.IPaintable;
+import drawing.javafx.JavaFXPaintable;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.GridPane;
 
@@ -20,19 +24,27 @@ public class Controller {
     @FXML
     private GridPane PaintingGrid;
     private String selectedDrawingItem;
+    @FXML
+    private Canvas drawingCanvas;
+    IPaintable paint;
+    Drawing drawing = new Drawing("drawing") ;
+    public Controller() {
+
+        week1Testcode();
+    }
 
     @FXML
     private void week1Testcode() {
 
-        Drawing drawing = new Drawing("drawing");
-        Oval oval = new Oval(Color.BLACK, new Point(7, 7), 3, 4, 5);
+         drawing = new Drawing("drawing");
+        Oval oval = new Oval(Color.BLACK, new Point(70, 70), 30, 40, 5);
         System.out.println("Oval: " + oval.toString());
         drawing.addItem(oval);
-        Point[] points = {new Point(2, 2), new Point(3, 2), new Point(2, 3)};
+        Point[] points = {new Point(300, 240), new Point(150, 100), new Point(200, 300),new Point(247, 145)};
         Polygon pol = new Polygon(points, 6);
         System.out.println("Polygon: " + pol.toString());
         drawing.addItem(pol);
-        PaintedText paintedText = new PaintedText("word", "Comic Sans", new Point(1, 1), 2, 2);
+        PaintedText paintedText = new PaintedText("word", "Comic Sans", new Point(10, 10), 200, 20);
         System.out.println("PaintedText: " + paintedText.toString());
         drawing.addItem(paintedText);
         File createdFile = null;
@@ -67,17 +79,32 @@ public class Controller {
         }
     }
     @FXML
+    private  void mouseClick()
+    {
+
+    }
+    @FXML
+    private  void painting()
+    {
+        this.paint = new JavaFXPaintable(this.drawingCanvas);
+        drawing.paintUsing(paint);
+    }
+    @FXML
     private void DrawingItemSelected()
     {
         if (this.ImageBtn.isSelected() == true)
         {
             System.out.println("Image");
             this.selectedDrawingItem = "image";
+            //drawing.addItem(new Image());
+
         }
         if (this.OvalBtn.isSelected() == true)
         {
             System.out.println("Oval");
             this.selectedDrawingItem = "Oval";
+            this.paint = new JavaFXPaintable(this.drawingCanvas);
+
         }
         if (this.PaintedTextBtn.isSelected() == true)
         {
