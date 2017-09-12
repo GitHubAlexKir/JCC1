@@ -1,37 +1,65 @@
 package Repositories;
 
-import Domains.Drawing;
+import Domains.*;
 
+import java.io.*;
 import java.sql.*;
+import java.util.List;
 import java.util.Properties;
 
 public class DatabaseMediator implements SerializationMediator {
     private Properties props;
     private Connection con;
-    @Override
-    public Drawing load(String nameDrawing) {
-        try {
-           con = DriverManager.getConnection("jdbc:mysql://studmysql01.fhict.local/dbi361412", "dbi361412", "Wachtwoord2");;
-            System.out.println("Succsess");
-            Statement myStmt = con.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from drawing");
-            while (myRs.next()){
-                System.out.println(myRs.getString("ID") + ", " + myRs.getString("Name"));
-            }
-        } catch (SQLException e) {
-            System.out.println("kut");
-            e.printStackTrace();
+    static final String WRITE_OBJECT_SQL = "INSERT INTO Drawing(drawingname,name, object_value) VALUES (?, ?, ?)";
+    static final String READ_OBJECT_SQL = "SELECT object_value FROM drawing WHERE drawingname = ?";
+
+    private Connection getConnection() throws Exception {
+        Class.forName("com.mysql.jdbc.Driver");
+        props = new Properties();
+        FileInputStream in = new FileInputStream("C:\\Users\\Alex\\IdeaProjects\\Learning1\\src\\Repositories\\db.properties");
+        props.load(in);
+        in.close();
+        String driver = props.getProperty("jdbc.driver");
+        if (driver != null) {
+            Class.forName(driver) ;
         }
-        return  null;
+        String url = props.getProperty("jdbc.url");
+        String username = props.getProperty("jdbc.username");
+        String password = props.getProperty("jdbc.password");
+        con = DriverManager.getConnection(url, username, password);
+        return con;
+    }
+    @Override
+    public Drawing load(String nameDrawing) throws Exception {
+        PreparedStatement pstmt = getConnection().prepareStatement(READ_OBJECT_SQL);
+        pstmt.setString(1, nameDrawing);
+        ResultSet rs = pstmt.executeQuery();
+        rs.next();
+        byte[] buf = rs.getBytes(1);
+        ObjectInputStream objectIn = null;
+        if (buf != null) {
+            objectIn = new ObjectInputStream(new ByteArrayInputStream(buf));
+        }
+        Object deSerializedObject = objectIn.readObject();
+        rs.close();
+        pstmt.close();
+        Drawing testing3 = (Drawing) deSerializedObject;
+        return testing3;
     }
 
-    @Override
-    public boolean save(Drawing drawing) {
-        return false;
+    public boolean save(Drawing drawing) throws Exception {
+        String className = drawing.getClass().getName();
+        PreparedStatement pstmt = getConnection().prepareStatement(WRITE_OBJECT_SQL);
+        pstmt.setString(1, drawing.getName());
+        pstmt.setString(2, className);
+        pstmt.setObject(3, drawing);
+        pstmt.executeUpdate();
+        pstmt.close();
+        System.out.println("writeJavaObject: done serializing: " + className);
+        return true;
     }
-
-    @Override
     public boolean init(Properties props) {
         return false;
     }
+
 }

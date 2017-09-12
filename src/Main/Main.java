@@ -20,8 +20,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        SerializationMediator test = new DatabaseMediator();
-        test.load("test");
         launch(args);
     }
 }

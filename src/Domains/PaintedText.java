@@ -19,30 +19,6 @@ public class PaintedText extends DrawingItem{
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getFontName() {
-        return fontName;
-    }
-
-    public void setFontName(String fontName) {
-        this.fontName = fontName;
-    }
-
-    public void setAnchor(Point anchor) {
-        this.anchor = anchor;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
     public Point getAnchor() {
         return anchor;
     }

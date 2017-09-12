@@ -1,6 +1,8 @@
 package Domains;
 
-public class Point {
+import java.io.Serializable;
+
+public class Point implements Serializable {
     private final double X;
     private final double Y;
 

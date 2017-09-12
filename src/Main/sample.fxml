@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.Pane?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Controllers.Controller">
-   <Canvas fx:id="drawingCanvas" height="343.0" layoutX="14.0" layoutY="42.0" width="567.0"/>
-   <Group layoutX="14.0" layoutY="14.0">
-      <RadioButton fx:id="OvalBtn" layoutY="6.0" mnemonicParsing="false" onAction="#DrawingItemSelected"
-                   selected="true" text="Oval">
-         <toggleGroup>
-            <ToggleGroup fx:id="DrawingItemRadioBtn"/>
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="ImageBtn" layoutX="128.0" layoutY="6.0" mnemonicParsing="false"
-                   onAction="#DrawingItemSelected" prefHeight="17.0" prefWidth="62.0" text="Image"
-                   toggleGroup="$DrawingItemRadioBtn"/>
-      <RadioButton fx:id="PaintedTextBtn" layoutX="323.0" layoutY="6.0" mnemonicParsing="false"
-                   onAction="#DrawingItemSelected" text="Painted Text" toggleGroup="$DrawingItemRadioBtn"/>
-      <RadioButton fx:id="PolygonBtn" layoutX="54.0" layoutY="6.0" mnemonicParsing="false"
-                   onAction="#DrawingItemSelected" prefHeight="17.0" prefWidth="74.0" text="Polygon"
-                   toggleGroup="$DrawingItemRadioBtn"/>
-      <TextField layoutX="418.0" layoutY="2.0" promptText="Text for Painted Text"/>
-      <Button layoutX="207.0" layoutY="2.0" mnemonicParsing="false" onAction="#painting" text="Paint drawing"/>
-   </Group>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
+   <children>
+      <Canvas fx:id="drawingCanvas" height="343.0" layoutX="14.0" layoutY="42.0" width="567.0" />
+      <Group layoutX="14.0" layoutY="14.0">
+         <children>
+            <RadioButton fx:id="OvalBtn" layoutY="6.0" mnemonicParsing="false" onAction="#DrawingItemSelected" selected="true" text="Oval">
+               <toggleGroup>
+                  <ToggleGroup fx:id="DrawingItemRadioBtn" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="ImageBtn" layoutX="128.0" layoutY="6.0" mnemonicParsing="false" onAction="#DrawingItemSelected" prefHeight="17.0" prefWidth="62.0" text="Image" toggleGroup="$DrawingItemRadioBtn" />
+            <RadioButton fx:id="PaintedTextBtn" layoutX="323.0" layoutY="6.0" mnemonicParsing="false" onAction="#DrawingItemSelected" text="Painted Text" toggleGroup="$DrawingItemRadioBtn" />
+            <RadioButton fx:id="PolygonBtn" layoutX="54.0" layoutY="6.0" mnemonicParsing="false" onAction="#DrawingItemSelected" prefHeight="17.0" prefWidth="74.0" text="Polygon" toggleGroup="$DrawingItemRadioBtn" />
+            <TextField layoutX="418.0" layoutY="2.0" promptText="Text for Painted Text" />
+            <Button layoutX="207.0" layoutY="2.0" mnemonicParsing="false" onAction="#painting" text="Paint drawing" />
+         </children>
+      </Group>
+      <Button layoutX="14.0" layoutY="426.0" mnemonicParsing="false" text="Load database" />
+      <Button layoutX="120.0" layoutY="426.0" mnemonicParsing="false" onAction="#saveDrawingDB" text="Save Database" />
+      <Button layoutX="229.0" layoutY="426.0" mnemonicParsing="false" text="Load Properties" />
+      <Button layoutX="349.0" layoutY="426.0" mnemonicParsing="false" text="Save Properties" />
+   </children>
 </Pane>

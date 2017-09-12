@@ -19,4 +19,6 @@ public class PersistencyMediator implements SerializationMediator {
     public boolean init(Properties props) {
         return false;
     }
+
+
 }

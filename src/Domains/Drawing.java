@@ -2,10 +2,11 @@ package Domains;
 
 import drawing.javafx.IPaintable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Drawing {
+public class Drawing implements Serializable {
     private String name;
     private final List<DrawingItem> items;
 

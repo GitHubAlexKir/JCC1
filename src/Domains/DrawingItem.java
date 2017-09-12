@@ -1,9 +1,10 @@
 package Domains;
 
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public abstract class DrawingItem implements Comparator<DrawingItem> {
+public abstract class DrawingItem implements Comparator<DrawingItem> ,Serializable {
 
     Color color;
 
