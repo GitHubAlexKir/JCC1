@@ -26,9 +26,9 @@
             <Button layoutX="207.0" layoutY="2.0" mnemonicParsing="false" onAction="#painting" text="Paint drawing" />
          </children>
       </Group>
-      <Button layoutX="14.0" layoutY="426.0" mnemonicParsing="false" text="Load database" />
+      <Button layoutX="14.0" layoutY="426.0" mnemonicParsing="false" onAction="#loadDrawingDB" text="Load database" />
       <Button layoutX="120.0" layoutY="426.0" mnemonicParsing="false" onAction="#saveDrawingDB" text="Save Database" />
-      <Button layoutX="229.0" layoutY="426.0" mnemonicParsing="false" text="Load Properties" />
-      <Button layoutX="349.0" layoutY="426.0" mnemonicParsing="false" text="Save Properties" />
+      <Button layoutX="229.0" layoutY="426.0" mnemonicParsing="false" onAction="#loadDrawingF" text="Load Properties" />
+      <Button layoutX="349.0" layoutY="426.0" mnemonicParsing="false" onAction="#saveDrawingF" text="Save Properties" />
    </children>
 </Pane>
