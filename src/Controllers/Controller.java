@@ -29,7 +29,6 @@ public class Controller {
     private GridPane PaintingGrid;
     @FXML
     private Canvas drawingCanvas;
-    private IPaintable paint;
     private Drawing drawing;
     public Controller() {
 
@@ -82,7 +81,7 @@ public class Controller {
     @FXML
     private void painting()
     {
-        this.paint = new JavaFXPaintable(this.drawingCanvas);
+        IPaintable paint = new JavaFXPaintable(this.drawingCanvas);
         drawing.paintUsing(paint);
     }
     @FXML

@@ -12,7 +12,7 @@ public class PersistencyMediator implements SerializationMediator {
         try(
             InputStream file = new FileInputStream(nameDrawing+".ser");
             InputStream buffer = new BufferedInputStream(file);
-            ObjectInput input = new ObjectInputStream (buffer);
+            ObjectInput input = new ObjectInputStream (buffer)
 
         )
         {
@@ -33,8 +33,8 @@ public class PersistencyMediator implements SerializationMediator {
         try (
             OutputStream file = new FileOutputStream(drawing.getName() +".ser");
             OutputStream buffer = new BufferedOutputStream(file);
-            ObjectOutput output = new ObjectOutputStream(buffer);
-            )
+            ObjectOutput output = new ObjectOutputStream(buffer)
+        )
         {
             output.writeObject(drawing);
         }
